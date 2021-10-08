@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/PromotionEngine/.vs/PromotionEngine/v16/.suo
+/PromotionEngine/PromotionEngine/obj
+/PromotionEngine/PromotionEngine/bin/Debug/net5.0
