@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromotionEngine", "Promotio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionsLib", "PromotionsLib\PromotionsLib.csproj", "{A6AD6A91-D4B5-4128-98EA-8B4096C474DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngineTest", "PromotionEngineTest\PromotionEngineTest.csproj", "{19F6879B-C26F-4553-A00D-D49FA95CEAB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A6AD6A91-D4B5-4128-98EA-8B4096C474DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6AD6A91-D4B5-4128-98EA-8B4096C474DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6AD6A91-D4B5-4128-98EA-8B4096C474DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F6879B-C26F-4553-A00D-D49FA95CEAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F6879B-C26F-4553-A00D-D49FA95CEAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F6879B-C26F-4553-A00D-D49FA95CEAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F6879B-C26F-4553-A00D-D49FA95CEAB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
