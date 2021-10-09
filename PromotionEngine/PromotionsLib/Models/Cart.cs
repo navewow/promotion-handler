@@ -10,7 +10,6 @@ namespace PromotionsLib.Models
     {
         public List<CartItem> CartItems { get; set; }
         public float CartTotal { get; set; }
-        public float PromoCartTotal { get; set; }
     }
 
     public class CartItem
