@@ -17,22 +17,55 @@ namespace PromotionsLib.Core
         {
             _iDBService = iDBService;
         }
-        public CartItem ProcessPromotion(CartItem cartItem) {
+        public CartItem ProcessPromotion(CartItem cartItem, Cart cart) {
 
-            cartItem.ItemTotalPrice = _iDBService.GetProduct(cartItem.Unit).Price * cartItem.Quantity;
-            var eligilePromotions = CheckOfferEligibility(cartItem);
+            var UnitPrice = _iDBService.GetProduct(cartItem.Unit).Price;
+            cartItem.ItemTotalPrice = UnitPrice * cartItem.Quantity;
+            //cartItem.ItemOfferPrice = cartItem.ItemTotalPrice;
+            cartItem.UnitPrice = UnitPrice;
+
+            var eligilePromotions = CheckOfferEligibility(cartItem, cart.CartItems);
             if (eligilePromotions.Count > 0) {
-                CalculatePromotionPrice(cartItem, eligilePromotions);            
+                CalculatePromotionPrice(cart, eligilePromotions);            
             }
 
-            return new CartItem();        
+            return cartItem;        
         }
 
-        private void CalculatePromotionPrice(CartItem cartItem, List<Promotion> eligilePromotions)
+        private List<Promotion> CheckOfferEligibility(CartItem cartItem, List<CartItem> cartItems)
+        {
+            List<Promotion> EligiblePromotions = new List<Promotion>();
+
+            if (string.IsNullOrEmpty(cartItem.PromoApplied)) {
+                foreach (Promotion promotion in _iDBService.GetPromtion(cartItem.Unit))
+                {
+                    switch (promotion.PromotionType)
+                    {
+                        case PromotionType.IndividualPromotion:
+                            if (cartItem.Quantity >= promotion.MinQuantity)
+                                EligiblePromotions.Add(promotion);
+                            break;
+                        case PromotionType.CombinedPromotion:
+                            if (!promotion.PromotionUnits.Except(cartItems.Select(x => x.Unit)).Any()) { 
+                                EligiblePromotions.Add(promotion);
+                            }
+                            break;
+                        case PromotionType.PercentagePromotion:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            
+            return EligiblePromotions;
+        }
+
+        private void CalculatePromotionPrice(Cart cart, List<Promotion> eligilePromotions)
         {
             foreach (var eligilePromotion in eligilePromotions)
             {
-                cartItem.ItemOfferPrice =  GetPromotionProcessor(eligilePromotion.PromotionType).ApplyPromotion(cartItem);                
+                GetPromotionProcessor(eligilePromotion.PromotionType).ApplyPromotion(cart, eligilePromotion);                
             }
         }
 
@@ -49,18 +82,6 @@ namespace PromotionsLib.Core
             throw new ArgumentException("Invalid Promotion");
         }
 
-        private List<Promotion> CheckOfferEligibility(CartItem cartItem) {
-
-            List<Promotion> EligiblePromotions = new List<Promotion>(); 
-
-            foreach (var Promotion in _iDBService.GetPromtion(cartItem.Unit))
-            {
-                if (cartItem.Quantity >= Promotion.MinQuantity)
-                    EligiblePromotions.Add(Promotion);
-
-            }
-
-            return EligiblePromotions;
-        }
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PromotionsLib.Core.PromotionLogics;
 using PromotionsLib.DAL;
 using PromotionsLib.Models;
+using System.Linq;
 
 namespace PromotionsLib.Core.PromotionLogics
 {
@@ -13,9 +14,15 @@ namespace PromotionsLib.Core.PromotionLogics
             this.iDBService = iDBService;
         }
 
-        public float ApplyPromotion(CartItem cartItem)
+        public void ApplyPromotion(Cart cart, Promotion eligilePromotion)
         {
-            throw new System.NotImplementedException();
+            var commonItems = cart.CartItems.Select(s1 => s1.Unit).ToList().Intersect(eligilePromotion.PromotionUnits).ToList();
+            
+            foreach (var item in commonItems)
+            {
+                cart.CartItems.First(x => x.Unit == item).PromoApplied = eligilePromotion.PromotionName;                
+            }
+            cart.CartItems.First(x => x.Unit == commonItems.Last()).ItemOfferPrice = eligilePromotion.PromotionPrice;
         }
     }
 }

@@ -9,6 +9,6 @@ namespace PromotionsLib.Core.PromotionLogics
 {
     interface IPromotion
     {
-        float ApplyPromotion(CartItem cartItem);
+        void ApplyPromotion(Cart cart, Promotion eligilePromotion);
     }
 }

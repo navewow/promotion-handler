@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace PromotionsLib.Models
 {
-    class Cart
+    public class Cart
     {
         public List<CartItem> CartItems { get; set; }
         public float CartTotal { get; set; }
+        public float PromoCartTotal { get; set; }
     }
 
     public class CartItem
@@ -19,5 +20,6 @@ namespace PromotionsLib.Models
         public float ItemTotalPrice { get; set; }
         public float ItemOfferPrice { get; set; }
         public string PromoApplied { get; set; }
+        public float UnitPrice { get;  set; }
     }
 }

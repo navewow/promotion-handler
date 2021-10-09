@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace PromotionsLib
 {
-    interface IPromotionHandler
+    public interface IPromotionHandler
     {
-        Cart ApplyPromotion(Cart cart);
+        public Cart ApplyPromotion(Cart cart);
     }
 }

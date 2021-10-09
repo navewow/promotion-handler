@@ -16,12 +16,15 @@ namespace PromotionsLib.Core.PromotionLogics
         {
             _iDBService = iDBService;
         }
-        public float ApplyPromotion(CartItem cartItem)
+        public void ApplyPromotion(Cart cart, Promotion promotion)
         {
-            Promotion promotion =  _iDBService.GetPromtionbyType(PromotionType.IndividualPromotion);
+            var cartItem = cart.CartItems.First(p => p.Unit == promotion.PromotionUnits.First());
 
+            int offerapplicableQuantity =  (int) (cartItem.Quantity / promotion.MinQuantity);
+            int offerNotApplicable = cartItem.Quantity % promotion.MinQuantity;
 
-            throw new System.NotImplementedException();
+            cartItem.PromoApplied = promotion.PromotionName;
+            cartItem.ItemOfferPrice = (offerapplicableQuantity * promotion.PromotionPrice) + (offerNotApplicable * cartItem.UnitPrice);
         }
     }
 }

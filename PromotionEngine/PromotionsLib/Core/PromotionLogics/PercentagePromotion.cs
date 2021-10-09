@@ -13,7 +13,7 @@ namespace PromotionsLib.Core.PromotionLogics
             this.iDBService = iDBService;
         }
 
-        public float ApplyPromotion(CartItem cartItem)
+        public void ApplyPromotion(Cart cart, Promotion eligilePromotion)
         {
             throw new System.NotImplementedException();
         }
