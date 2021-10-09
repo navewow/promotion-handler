@@ -10,3 +10,5 @@
 /PromotionEngine/PromotionsLib/obj
 /PromotionEngine/PromotionsLib/bin/Debug/net5.0
 /PromotionEngine/.vs/PromotionEngine/config
+/PromotionEngine/PromotionEngineTests/bin/Debug/.netcoreapp,version=v5.0
+/PromotionEngine/PromotionEngineTests/obj
