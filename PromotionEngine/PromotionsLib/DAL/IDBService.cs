@@ -9,6 +9,10 @@ namespace PromotionsLib.DAL
 {
     interface IDBService
     {
+        List<Promotion> GetPromtion(Char Unit);
+        Promotion GetPromtionbyType(PromotionType promotionType);
         List<Promotion> GetAllPromotions();
+        Product GetProduct(char Unit);
+        List<Product> GetAllProduct();
     }
 }

@@ -9,6 +9,16 @@ namespace PromotionsLib.DAL
 {
     internal class DBService : IDBService
     {
+
+        public List<Promotion> GetPromtion(Char Unit) {
+            return GetAllPromotions().Where(p => p.PromotionUnits.Contains(Unit)).ToList();
+        }
+
+        public Promotion GetPromtionbyType(PromotionType promotionType)
+        {
+            return GetAllPromotions().FirstOrDefault(p => p.PromotionType == promotionType);
+        }
+
         public List<Promotion> GetAllPromotions() {
 
             return new List<Promotion>

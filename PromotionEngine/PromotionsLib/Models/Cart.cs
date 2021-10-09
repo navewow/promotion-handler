@@ -16,6 +16,8 @@ namespace PromotionsLib.Models
     {
         public char Unit { get; set; }
         public int Quantity { get; set; }
-        public float ItemTotal { get; set; }
+        public float ItemTotalPrice { get; set; }
+        public float ItemOfferPrice { get; set; }
+        public string PromoApplied { get; set; }
     }
 }
