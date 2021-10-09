@@ -23,25 +23,7 @@ Sample Request:
 }
 
 Sample Response:
-Swagger UI
-Select a definition
 
-PromotionEngine v1
-PromotionEngine
- v1 
-OAS3
-/swagger/v1/swagger.json
-Promotions
-
-POST
-​/api​/Promotions
-Parameters
-Cancel
-No parameters
-
-Request body
-
-application/json
 {
   "cartItems": [
     {
