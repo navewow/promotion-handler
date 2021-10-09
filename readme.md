@@ -23,40 +23,6 @@ Sample Request:
 }
 
 Sample Response:
-
-{
-  "cartItems": [
-    {
-      "unit": "A",
-      "quantity": 5
-    },
-    {
-      "unit": "B",
-      "quantity": 5
-    },
-    {
-      "unit": "C",
-      "quantity": 1
-    },
-    {
-      "unit": "D",
-      "quantity": 1
-    }
-  ]
-}
-Execute
-Clear
-Responses
-Curl
-
-curl -X POST "https://localhost:44389/api/Promotions" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"cartItems\":[{\"unit\":\"A\",\"quantity\":5},{\"unit\":\"B\",\"quantity\":5},{\"unit\":\"C\",\"quantity\":1},{\"unit\":\"D\",\"quantity\":1}]}"
-Request URL
-https://localhost:44389/api/Promotions
-Server response
-Code	Details
-200	
-Response body
-Download
 {
   "cartItems": [
     {
